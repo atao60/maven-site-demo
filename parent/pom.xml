@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  pom.xml - Parent for Nicepop test - Popsuite - 2013 - Test7
+  %%
+  Copyright (C) 2013 - 2014 Popsuite. All rights reserved-4.
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>nicepop-test</groupId>
+	<artifactId>nicepop-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Parent for Nicepop test</name>
+	<description>Gathers all the shared configuration items for Nicepop test</description>
+
+	<url>${siteURL.root}${project.artifactId}/</url>
+	<organization>
+		<name>Popsuite</name>
+	</organization>
+	<inceptionYear>2013</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>Apache License version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+
+	<distributionManagement>
+		<site>
+			<id>${project.groupId}-${project.artifactId}-test-site</id>
+			<url>${topSiteURL.root}${project.artifactId}/</url>
+		</site>
+	</distributionManagement>
+
+	<properties>
+        <!-- Project properties -->
+		<copyright.holder>${project.organization.name}</copyright.holder>
+		<allRightsReserved>. All rights reserved-4.</allRightsReserved>
+		<copyright.pattern>Copyright &#169; %s%s %s${allRightsReserved}</copyright.pattern>
+
+		<siteURL.root>https://dummy/</siteURL.root>
+		<topSiteURL.root>http://dummySite/</topSiteURL.root>
+		<build.config.package>nicepop/build/config</build.config.package>
+		<build.config.resoources.dir>build-config/src/main/resources</build.config.resoources.dir>
+		<build.config.dir>${project.parent.basedir}/../${build.config.resoources.dir}/${build.config.package}</build.config.dir>
+		<jacoco.reportPath>${project.build.directory}/jacoco.exec</jacoco.reportPath>
+		<jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</jacoco.itReportPath>
+
+        <!-- Compiler and encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<jdkVersion>1.8</jdkVersion>
+		<maven.compiler.source>${jdkVersion}</maven.compiler.source>
+		<maven.compiler.target>${jdkVersion}</maven.compiler.target>
+		<maven.compiler.fork>true</maven.compiler.fork>
+		<maven.compiler.compilerVersion>${jdkVersion}</maven.compiler.compilerVersion>
+		<maven.compiler.verbose>true</maven.compiler.verbose>
+		<maven.compiler.optimize>true</maven.compiler.optimize>
+		<maven.compiler.debug>true</maven.compiler.debug>
+
+        <!-- Maven and plugin management -->
+		<mavenMinVersion>3.1</mavenMinVersion>
+
+        <source.maven.version>2.4</source.maven.version>
+        <resources.maven.version>2.7</resources.maven.version>
+		<jar.maven.version>2.5</jar.maven.version>
+		<enforcer.maven.version>1.3.1</enforcer.maven.version>
+		<license.maven.version>1.8</license.maven.version>
+		<compiler.maven.version>3.2</compiler.maven.version>
+		<build.helper.maven.version>1.9.1</build.helper.maven.version>
+		<surefire.maven.version>2.18</surefire.maven.version>
+		<surefire.report.maven.version>2.18</surefire.report.maven.version>
+		<failsafe.maven.version>2.18</failsafe.maven.version>
+		<jacoco.maven.version><!--0.7.1.201405082137, 0.7.3.201410310304-->
+			0.7.2.201409121644
+		</jacoco.maven.version>
+		<javadoc.maven.version>2.10.1</javadoc.maven.version>
+		<jxr.maven.version>2.5</jxr.maven.version>
+		<site.maven.version>3.4</site.maven.version>
+		<taglist.maven.version>2.4</taglist.maven.version>
+		<versions.maven.version>2.1</versions.maven.version>
+		<info.reports.maven.version>2.7</info.reports.maven.version>
+		<checkstyle.maven.version>2.13</checkstyle.maven.version>
+		<checkstyle.version>6.1.1</checkstyle.version>
+		<pmd.maven.version>3.3</pmd.maven.version><!-- pmd 5.2.1 provided; pmd 5.1.2 required for java 8 -->
+		<findbugs.maven.version>3.0.0</findbugs.maven.version>
+		<jdepend.maven.version>2.0</jdepend.maven.version>
+		<groovy.maven.version>1.2</groovy.maven.version>
+		<groovy.version>2.3.8</groovy.version>
+
+	</properties>
+
+	<profiles>
+		<profile>
+        <!-- Required to get module under target/staging/{module name}
+             and not under target/staging/{module name}/{module name}.
+        -->
+			<id>is-not-parent</id>
+			<activation>
+				<file>
+					<missing>parent-module-dont-remove-me</missing>
+				</file>
+			</activation>
+			<distributionManagement>
+				<site>
+					<id>${project.groupId}-${project.artifactId}-site</id>
+					<url>${topSiteURL.root}</url>
+				</site>
+			</distributionManagement>
+		</profile>
+		<profile>
+			<id>is-parent</id>
+			<activation>
+				<file>
+					<exists>parent-module-dont-remove-me</exists>
+				</file>
+			</activation>
+			<properties>
+				<build.config.dir>${project.basedir}/../${build.config.resoources.dir}/${build.config.package}</build.config.dir>
+			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<artifactId>maven-clean-plugin</artifactId>
+							<configuration>
+								<filesets>
+									<fileset>
+										<directory>src/site</directory>
+										<followSymlinks>false</followSymlinks>
+									</fileset>
+								</filesets>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		
+        <!-- Updates file headers and license files -->
+		<profile>
+			<id>update-copyright</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<configuration>
+							<organizationName>${copyright.holder}${allRightsReserved}</organizationName>
+							<licenseName>apache_v2</licenseName>
+							<!-- 
+							<descriptionTemplate>${build.config.dir}/myDescriptionTemplate.ftl</descriptionTemplate>
+							 -->
+							<descriptionTemplate>${build.config.package}/myDescriptionTemplate.ftl</descriptionTemplate>
+							<canUpdateDescription>true</canUpdateDescription>
+							<canUpdateCopyright>true</canUpdateCopyright>
+							<canUpdateLicense>true</canUpdateLicense>
+						</configuration>
+
+						<dependencies>
+							<dependency>
+								<groupId>nicepop-test</groupId>
+								<artifactId>nicepop-build-config</artifactId>
+								<version>${project.version}</version>
+							</dependency>
+						</dependencies>
+
+						<executions>
+						    <!-- updates the header of source files (generated or not) -->
+							<execution>
+								<id>update-copyright-sources</id>
+								<phase>process-sources</phase>
+								<goals>
+									<goal>update-file-header</goal>
+								</goals>
+								<configuration>
+									<roots>
+										<root>src</root><!-- by default -->
+										<root>target/generated-sources</root><!-- by default -->
+										<root>target/processed-sources</root><!-- by default -->
+										<root>target/generated-test-sources</root>
+									</roots>
+									<verbose>true</verbose>
+								</configuration>
+							</execution>
+							<!-- updates the header under the root files, but not inside the folders -->
+							<execution>
+								<id>update-copyright-root</id>
+								<phase>process-sources</phase>
+								<goals>
+									<goal>update-file-header</goal>
+								</goals>
+								<configuration>
+									<roots>
+										<root>.</root>
+									</roots>
+									<includes>
+										<include>*.*</include>
+									</includes>
+									<excludes>
+										<exclude>*.txt</exclude>
+									</excludes>
+									<verbose>true</verbose>
+								</configuration>
+							</execution>
+							<!-- updates the LICENSE.txt files -->
+							<execution>
+								<id>update-license</id>
+								<goals>
+									<goal>update-project-license</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-enforcer-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.google.code.maven-replacer-plugin</groupId>
+					<artifactId>replacer</artifactId>
+					<version>1.5.3</version>
+					<executions>
+						<execution>
+							<id>replace-for-documentation</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>replace</goal>
+							</goals>
+							<configuration>
+
+								<preserveDir>true</preserveDir>
+								<basedir>${basedir}/src/main/resources</basedir>
+
+								<outputBasedir>${basedir}</outputBasedir>
+
+								<outputDir>src/site</outputDir>
+								<ignoreErrors>true</ignoreErrors>
+								<regex>false</regex>
+								<delimiters>
+									<delimiter>$${*}</delimiter>
+								</delimiters>
+								<filesToInclude>
+									markdown/*.md,site.xml
+								</filesToInclude>
+								<replacements>
+									<replacement>
+										<token>project.name</token>
+										<value>${project.name}</value>
+									</replacement>
+								</replacements>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${compiler.maven.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${build.helper.maven.version}</version>
+					<executions>
+                    <!-- defines integration test source -->
+						<execution>
+							<id>add-integration-test-sources</id>
+							<phase>generate-test-sources</phase>
+							<goals>
+								<goal>add-test-source</goal>
+							</goals>
+							<configuration>
+								<sources>
+									<source>src/it/java</source>
+								</sources>
+							</configuration>
+						</execution>
+                        <!-- provides enforcer and maven version with maven.version property -->
+						<execution>
+							<id>get-maven-version</id>
+							<goals>
+								<goal>maven-version</goal>
+							</goals>
+						</execution>
+                        <!-- provides current year with current.year property -->
+						<execution>
+							<id>get-current-year</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>timestamp-property</goal>
+							</goals>
+							<configuration>
+								<name>current.year</name>
+								<locale>en</locale>
+								<pattern>yyyy</pattern>
+								<units>year</units>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+                <!-- provides a copyright message with owner and period -->
+				<plugin>
+					<groupId>org.codehaus.gmavenplus</groupId>
+					<artifactId>gmavenplus-plugin</artifactId>
+					<version>${groovy.maven.version}</version>
+					<configuration>
+						<scripts>
+							<script><![CDATA[
+                                    project.properties['upper.year'] = 
+                                       ( project.properties['current.year'] == project.inceptionYear ) ? 
+                                       "" : ", " + project.properties['current.year'];
+                                    project.properties['doc.bottom'] = 
+                                        String.format(project.properties['copyright.pattern'], 
+                                        project.inceptionYear,
+                                        project.properties['upper.year'],
+                                        project.properties['copyright.holder']);
+                                ]]></script>
+						</scripts>
+					</configuration>
+					<executions>
+						<execution>
+							<id>set-bottom-doc</id>
+							<phase>initialize</phase>
+							<goals>
+								<goal>execute</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.groovy</groupId>
+							<artifactId>groovy-all</artifactId>
+                            <!-- any version of Groovy \>= 1.5.0 should work here -->
+							<version>${groovy.version}</version>
+							<scope>runtime</scope>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${enforcer.maven.version}</version>
+					<executions>
+						<execution>
+							<id>enforce-versions</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+                                    <!-- Maven Site Plugin requires Maven 2.2.1 -->
+                                    <!-- FindBugs Maven Plugin 3.0.0 requires Maven 3.0.1 -->
+                                    <!-- Gemini Blueprint requires Maven 3.0.3 -->
+                                    <!-- modules executed with chronological order inside a phase requires Maven 3.0.3 -->
+                                    <!-- In-Memory Database Maven Plugin requires 3.0.5 -->
+									<requireMavenVersion>
+										<version>${mavenMinVersion}</version>
+										<message>[ERROR] OLD MAVEN [${maven.version}] in use.
+											Maven
+											${mavenMinVersion} or newer is required.</message>
+									</requireMavenVersion>
+
+                                    <!-- Jetty 9 requires JDK 1.7 -->
+                                    <!-- Vaadin 7 requires JDK 1.6 -->
+                                    <!-- Last versions of FindBugs requires JDK 1.7 -->
+                                    <!-- maven-javadoc-plugin requires JDK 1.5 -->
+                                    <!-- commons-dbcp2 requires JDK 1.7 -->
+									<requireJavaVersion>
+										<version>${jdkVersion}</version>
+										<message>[ERROR] OLD JDK [${java.version}] in use. This
+											project requires JDK ${jdkVersion} or newer.</message>
+									</requireJavaVersion>
+
+									<requirePluginVersions>
+										<banLatest>true</banLatest>
+										<banRelease>true</banRelease>
+										<banSnapshots>true</banSnapshots>
+									</requirePluginVersions>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${surefire.maven.version}</version>
+					<configuration>
+						<testFailureIgnore>true</testFailureIgnore>
+						<argLine>${utCoverageAgent}</argLine>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${surefire.report.maven.version}</version>
+					<configuration>
+						<alwaysGenerateSurefireReport>true</alwaysGenerateSurefireReport>
+						<alwaysGenerateFailsafeReport>true</alwaysGenerateFailsafeReport>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${failsafe.maven.version}</version>
+					<configuration>
+						<testFailureIgnore>true</testFailureIgnore>
+						<argLine>${itCoverageAgent}</argLine>
+					</configuration>
+					<executions>
+						<execution>
+							<id>integration-tests</id>
+							<goals>
+								<goal>integration-test</goal><!-- default phase: integration-test -->
+								<goal>verify</goal><!-- default phase: verify -->
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.maven.version}</version>
+					<executions>
+						<execution>
+							<id>pre-unit-test</id>
+							<goals>
+								<goal>prepare-agent</goal><!-- default phase: initialize -->
+							</goals>
+							<configuration>
+								<destFile>${jacoco.reportPath}</destFile>
+								<propertyName>utCoverageAgent</propertyName>
+							</configuration>
+						</execution>
+						<execution>
+							<id>post-unit-test</id>
+							<goals>
+								<goal>report</goal><!-- default phase: verify -->
+							</goals>
+							<configuration>
+								<dataFile>${jacoco.reportPath}</dataFile>
+							</configuration>
+						</execution>
+						<execution>
+							<id>it-agent</id>
+							<goals>
+								<goal>prepare-agent</goal><!-- default phase: pre-integration-test -->
+							</goals>
+							<configuration>
+								<destFile>${jacoco.itReportPath}</destFile>
+								<propertyName>itCoverageAgent</propertyName>
+							</configuration>
+						</execution>
+						<execution>
+							<id>post-integration-test</id>
+							<goals>
+								<goal>report</goal><!-- default phase: verify -->
+							</goals>
+							<configuration>
+								<dataFile>${jacoco.itReportPath}</dataFile>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${site.maven.version}</version>
+					<configuration>
+						<generateSitemap>true</generateSitemap>
+						<topSiteURL>${topSiteURL.root}</topSiteURL>
+					</configuration>
+					<executions>
+                        <!-- used for multiproject builds: provide a common site descriptor -->
+						<execution>
+							<id>attach-descriptor</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>attach-descriptor</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+                        <!-- required only to get the very last version, i.e. 1.6, and not the default one 1.4 -->
+						<dependency>
+							<groupId>org.apache.maven.doxia</groupId>
+							<artifactId>doxia-module-markdown</artifactId>
+							<version>1.6</version>
+						</dependency>
+						<!-- Required for Reflow skin -->
+						<dependency>
+							<groupId>lt.velykis.maven.skins</groupId>
+							<artifactId>reflow-velocity-tools</artifactId>
+							<version>1.1.1</version>
+						</dependency>
+                        <!-- Reflow skin requires Velocity >= 1.7  -->
+						<dependency>
+							<groupId>org.apache.velocity</groupId>
+							<artifactId>velocity</artifactId>
+							<version>1.7</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${jxr.maven.version}</version>
+					<configuration>
+						<aggregate>true</aggregate>
+						<windowTitle>Documentation Site Skeleton - Title Test</windowTitle>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${javadoc.maven.version}</version>
+					<configuration>
+						<doctitle>${project.name} (${project.version}) - Msg Test</doctitle>
+						<keywords>true</keywords>
+						<source>${maven.compiler.source}</source>
+						<detectJavaApiLink>true</detectJavaApiLink>
+						<detectLinks>true</detectLinks>
+						<detectOfflineLinks>true</detectOfflineLinks>
+						<linksource>true</linksource>
+						<show>package</show>
+						<aggregate>false</aggregate>
+						<verbose>true</verbose>
+                        <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+                        <docletArtifact>
+                            <groupId>org.umlgraph</groupId>
+                            <artifactId>umlgraph</artifactId>
+                            <version>5.6.6</version>
+                        </docletArtifact>
+                        <additionalparam>
+                            -all <!-- -attributes -operations -visibility -types -enumerations -enumconstants -->
+                            -views
+                            -inferrel
+                            -inferdep
+                            -quiet
+                            -hide java.*
+                            -collpackages java.util.*
+                            -qualify
+                            -postfixpackage
+                            -nodefontsize 9
+                            -nodefontpackagesize 7
+                        </additionalparam>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>${info.reports.maven.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>taglist-maven-plugin</artifactId>
+					<version>${taglist.maven.version}</version>
+					<configuration>
+						<emptyComments>true</emptyComments>
+						<tagListOptions>
+							<tagClasses>
+								<tagClass>
+									<displayName>Just things to do</displayName>
+									<tags>
+										<tag><!-- must be *before* the TODO match -->
+											<matchString>@todo</matchString>
+											<matchType>exact</matchType>
+										</tag>
+										<tag>
+											<matchString>TODO</matchString>
+											<matchType>exact</matchType>
+										</tag>
+									</tags>
+								</tagClass>
+								<tagClass>
+									<displayName>
+										Important fixes that have to be done until the
+										next release
+									</displayName>
+									<tags>
+										<tag>
+											<matchString>FIXME</matchString>
+											<matchType>ignoreCase</matchType>
+										</tag>
+									</tags>
+								</tagClass>
+								<tagClass>
+									<displayName>Things to verify and to check</displayName>
+									<tags>
+										<tag>
+											<matchString>(?i)check:</matchString>
+											<matchType>regEx</matchType>
+										</tag>
+									</tags>
+								</tagClass>
+							</tagClasses>
+						</tagListOptions>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${checkstyle.maven.version}</version>
+					<configuration>
+						<includeTestSourceDirectory>true</includeTestSourceDirectory>
+						<configLocation>${build.config.package}/popsuite-checkstyle.xml</configLocation>
+					</configuration>
+					<dependencies>
+                        <!-- rules to be shared with e.g. Eclipse -->
+						<dependency>
+							<groupId>nicepop-test</groupId>
+							<artifactId>nicepop-build-config</artifactId>
+							<version>${project.version}</version>
+						</dependency>
+                        <!-- to get the last version, not the default one (5.7) -->
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>${checkstyle.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${pmd.maven.version}</version>
+					<configuration>
+						<skip>${skip.pmd}</skip>
+                        <!-- 
+                        <targetJdk>${maven.compiler.target}</targetJdk>
+                         -->
+						<linkXRef>true</linkXRef>
+						<aggregate>false</aggregate>
+						<skipEmptyReport>false</skipEmptyReport>
+						<failOnViolation>true</failOnViolation>
+						<includeXmlInSite>true</includeXmlInSite>
+						<rulesets>
+							<ruleset>${build.config.dir}/popsuite-pmd-java.xml</ruleset>
+						</rulesets>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${findbugs.maven.version}</version>
+					<configuration>
+						<failOnError>false</failOnError>
+						<excludeFilterFile>${build.config.dir}/popsuite-excluded-findbugs.xml</excludeFilterFile>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jdepend-maven-plugin</artifactId>
+					<version>${jdepend.maven.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.6.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${resources.maven.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${jar.maven.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${license.maven.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${source.maven.version}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar-no-fork</goal>
+								<goal>test-jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<reporting>
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${jxr.maven.version}</version>
+				<reportSets>
+					<reportSet>
+						<id>aggregate</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+							<report>test-aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${javadoc.maven.version}</version>
+
+				<reportSets>
+					<reportSet>
+						<id>aggregate</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+							<report>test-aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>${surefire.report.maven.version}</version>
+				<reportSets>
+					<reportSet>
+						<id>tests</id>
+						<reports>
+							<report>report</report>
+							<report>failsafe-report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.maven.version}</version>
+			</plugin>
+
+			<plugin> <!-- must be somewhere after maven-jxr-plugin -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>${taglist.maven.version}</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${checkstyle.maven.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>checkstyle</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin> <!-- must be somewhere after maven-jxr-plugin -->
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${pmd.maven.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${findbugs.maven.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>${jdepend.maven.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${versions.maven.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>plugin-updates-report</report>
+							<report>property-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+		</plugins>
+	</reporting>
+
+</project>
