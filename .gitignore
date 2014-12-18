@@ -1,0 +1,9 @@
+target/
+bin/
+archives/
+archive/
+*.jar
+*.bak
+Copy of*
+pom.xml.versionsBackup
+dependency-reduced-pom.xml
