@@ -34,7 +34,7 @@
 
 	<name>Aggregator for Nicepop Application</name>
 	<description>Gathers all the modules required for Nicepop Application</description>
-    <url>${siteURL.root}</url>
+    <url>${site.url.root}</url>
 
 	<modules>
         <module>build-config</module>
@@ -46,7 +46,7 @@
     <distributionManagement>
         <site>
             <id>${project.groupId}-${project.artifactId}-site</id>
-            <url>${topSiteURL.root}</url>
+            <url>${top.site.url.root}</url>
         </site>
     </distributionManagement>
 

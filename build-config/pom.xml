@@ -11,11 +11,15 @@
     <description>
         Shared configuration files
     </description>
-    <url>${siteURL.root}${module.path}</url>
+    <url>${site.url.root}${module.path}</url>
     
     <properties>
-        <siteURL.root>https://dummy/</siteURL.root>
-        <topSiteURL.root>http://dummySite/</topSiteURL.root>
+        <repository.domain>github.com</repository.domain>
+        <repository.user>atao60</repository.user>
+        <repository.name>maven-site-demo</repository.name>
+        <site.path>${repository.domain}/${repository.user}/${repository.name}</site.path>
+        <site.url.root>https://${site.path}/</site.url.root>
+        <top.site.url.root>http://dummySite/</top.site.url.root>
         <module.path>build-config/</module.path>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,7 +32,7 @@
     <distributionManagement>
         <site>
             <id>${project.groupId}-${project.artifactId}-site</id>
-            <url>${topSiteURL.root}${module.path}</url>
+            <url>${top.site.url.root}${module.path}</url>
         </site>
     </distributionManagement>
 

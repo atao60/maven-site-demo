@@ -34,6 +34,6 @@
 	<name>Nicepop Domain Plugin</name>
 	<description>Define the application domain</description>
 
-	<url>${siteURL.root}${project.artifactId}/</url>
+	<url>${site.url.root}${project.artifactId}/</url>
 
 </project>
