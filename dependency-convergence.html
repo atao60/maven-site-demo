@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Aggregator for Nicepop Application &#x2013; About</title>
+		<title>Aggregator for Nicepop Application &#x2013; Reactor Dependency Convergence</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -32,7 +32,7 @@
 
 	</head>
 
-	<body class="page-index project-nicepop-aggregator" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-dependency-convergence project-nicepop-aggregator" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -65,11 +65,11 @@
 									<li class="dropdown-submenu ">
 										<a href="project-info.html" title="Project Information">Project Information</a>
 										<ul class="dropdown-menu">
-											<li class="active"><a href="" title="About">About</a></li>
+											<li ><a href="index.html" title="About">About</a></li>
 											<li ><a href="plugin-management.html" title="Plugin Management">Plugin Management</a></li>
 											<li ><a href="distribution-management.html" title="Distribution Management">Distribution Management</a></li>
 											<li ><a href="dependency-info.html" title="Dependency Information">Dependency Information</a></li>
-											<li ><a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a></li>
+											<li class="active"><a href="" title="Dependency Convergence">Dependency Convergence</a></li>
 											<li ><a href="source-repository.html" title="Source Repository">Source Repository</a></li>
 											<li ><a href="mail-lists.html" title="Mailing Lists">Mailing Lists</a></li>
 											<li ><a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a></li>
@@ -125,33 +125,90 @@
 			<div class="body-content">
 <div class="section"> 
  <div class="page-header">
-  <h2 id="About_Aggregator_for_Nicepop_Application">About Aggregator for Nicepop Application</h2>
+  <h2 id="Reactor_Dependency_Convergence">Reactor Dependency Convergence</h2>
  </div> 
- <a name="About_Aggregator_for_Nicepop_Application"></a> 
- <p>Gathers all the modules required for Nicepop Application</p> 
+ <table border="0" class="bodyTable table table-striped table-hover"> 
+  <caption> 
+   <b>Legend:</b> 
+  </caption> 
+  <tbody> 
+   <tr class="a"> 
+    <td><i class="icon-ok"></i></td> 
+    <td>All projects share one version of the dependency.</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><i class="icon-exclamation-sign"></i></td> 
+    <td>At least one project has a differing version of the dependency.</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <br /> 
+ <table border="0" class="bodyTable table table-striped table-hover"> 
+  <thead> 
+   <tr class="b"> 
+    <th>Ready for Release (100% Convergence and no SNAPSHOTS):</th> 
+    <td><i class="icon-ok"></i>&nbsp;<b>Success</b></td> 
+   </tr> 
+  </thead> 
+  <thead> 
+   <tr class="a"> 
+    <th>Convergence (NOD/NOA):</th> 
+    <td><i class="icon-ok"></i>&nbsp;<b>100%</b></td> 
+   </tr> 
+  </thead> 
+  <thead> 
+   <tr class="b"> 
+    <th>Number of SNAPSHOT artifacts (NOS):</th> 
+    <td>0</td> 
+   </tr> 
+  </thead> 
+  <thead> 
+   <tr class="a"> 
+    <th>Number of unique artifacts (NOA):</th> 
+    <td>1</td> 
+   </tr> 
+  </thead> 
+  <thead> 
+   <tr class="b"> 
+    <th>Number of dependencies (NOD):</th> 
+    <td>1</td> 
+   </tr> 
+  </thead> 
+  <thead> 
+   <tr class="a"> 
+    <th>Number of sub-projects:</th> 
+    <td>4</td> 
+   </tr> 
+  </thead> 
+  <caption> 
+   <b>Statistics:</b> 
+  </caption> 
+  <tbody> 
+  </tbody> 
+ </table> 
+</div> 
+<div class="section"> 
+ <h3 id="Dependencies_used_in_sub-projects">Dependencies used in sub-projects</h3> 
  <div class="section"> 
-  <h3 id="Project_Modules">Project Modules</h3> 
-  <a name="Project_Modules"></a> 
-  <p>This project has declared the following modules:</p> 
+  <h4 id="junit:junit">junit:junit</h4> 
   <table border="0" class="bodyTable table table-striped table-hover"> 
-   <thead> 
-    <tr class="a"> 
-     <th>Name</th> 
-     <th>Description</th> 
-    </tr> 
-   </thead> 
    <tbody> 
-    <tr class="b"> 
-     <td><a href="build-config/index.html">Nicepop - Staging test - Build configuration</a></td> 
-     <td>Shared configuration files</td> 
-    </tr> 
     <tr class="a"> 
-     <td><a href="nicepop-parent/index.html">Parent for Nicepop test</a></td> 
-     <td>Gathers all the shared configuration items for Nicepop test</td> 
-    </tr> 
-    <tr class="b"> 
-     <td><a href="nicepop-domain/index.html">Nicepop Domain Plugin</a></td> 
-     <td>Define the application domain</td> 
+     <td><i class="icon-ok"></i></td> 
+     <td> 
+      <table border="0" class="bodyTable table table-striped table-hover"> 
+       <tbody> 
+        <tr class="b"> 
+         <td width="25%">4.11</td> 
+         <td> 
+          <ol style="list-style-type: lower-alpha"> 
+           <li><a class="externalLink" href="https://github.com/atao60/maven-site-demo/">nicepop-test:nicepop-aggregator</a></li> 
+           <li><a class="externalLink" href="https://github.com/atao60/maven-site-demo/nicepop-domain/">nicepop-test:nicepop-domain</a></li> 
+           <li><a class="externalLink" href="https://github.com/atao60/maven-site-demo/nicepop-parent/">nicepop-test:nicepop-parent</a></li> 
+          </ol></td> 
+        </tr> 
+       </tbody> 
+      </table></td> 
     </tr> 
    </tbody> 
   </table> 
@@ -192,8 +249,8 @@
 						<li >
 							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-down"></i></a>
 							<ul class="nav nav-list">
-						<li class="active">
-							<a href="#" title="About">About</a>
+						<li >
+							<a href="index.html" title="About">About</a>
 						</li>
 						<li >
 							<a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
@@ -204,8 +261,8 @@
 						<li >
 							<a href="dependency-info.html" title="Dependency Information">Dependency Information</a>
 						</li>
-						<li >
-							<a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a>
+						<li class="active">
+							<a href="#" title="Dependency Convergence">Dependency Convergence</a>
 						</li>
 						<li >
 							<a href="source-repository.html" title="Source Repository">Source Repository</a>

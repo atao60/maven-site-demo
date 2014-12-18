@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./Dinner.html" title="org.nicepop.domain.Dinner" alt="" coords="15,209,171,282"/>
+<area shape="rect" id="node1" href="./Dinner.html" title="&lt;TABLE&gt;" alt="" coords="5,203,182,287"/>
+<area shape="rect" id="node2_1" href="./Recipe.html" title="org.nicepop.domain.Recipe" alt="" coords="217,177,543,314"/>
+<area shape="rect" id="node2" href="./Recipe.html" title="&lt;TABLE&gt;" alt="" coords="207,171,553,319"/>
+<area shape="rect" id="node3_2" href="./Meal.html" title="org.nicepop.domain.Meal" alt="" coords="149,11,323,117"/>
+<area shape="rect" id="node3" href="./Meal.html" title="&lt;TABLE&gt;" alt="" coords="139,6,333,122"/>
+</map>

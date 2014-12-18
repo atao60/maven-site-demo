@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Aggregator for Nicepop Application &#x2013; About</title>
+		<title>Maven providing a site and using java 8 - full step by step configuration &#x2013; Surefire Report</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -32,7 +32,7 @@
 
 	</head>
 
-	<body class="page-index project-nicepop-aggregator" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-failsafe-report project-nicepop-parent" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -47,16 +47,8 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Overview <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li ><a href="nicepop-parent/index.html" title="Introduction">Introduction</a></li>
-									<li ><a href="nicepop-parent/roadmap.html" title="Project Roadmap">Project Roadmap</a></li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Modules <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li ><a href="../../../dummySite/build-config/index.html" title="Nicepop - Staging test - Build configuration">Nicepop - Staging test - Build configuration</a></li>
-									<li ><a href="nicepop-parent/index.html" title="Parent for Nicepop test">Parent for Nicepop test</a></li>
-									<li ><a href="nicepop-domain/index.html" title="Nicepop Domain Plugin">Nicepop Domain Plugin</a></li>
+									<li ><a href="index.html" title="Introduction">Introduction</a></li>
+									<li ><a href="roadmap.html" title="Project Roadmap">Project Roadmap</a></li>
 								</ul>
 							</li>
 							<li class="dropdown active">
@@ -65,18 +57,16 @@
 									<li class="dropdown-submenu ">
 										<a href="project-info.html" title="Project Information">Project Information</a>
 										<ul class="dropdown-menu">
-											<li class="active"><a href="" title="About">About</a></li>
+											<li ><a href="index.html" title="About">About</a></li>
 											<li ><a href="plugin-management.html" title="Plugin Management">Plugin Management</a></li>
 											<li ><a href="distribution-management.html" title="Distribution Management">Distribution Management</a></li>
 											<li ><a href="dependency-info.html" title="Dependency Information">Dependency Information</a></li>
-											<li ><a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a></li>
 											<li ><a href="source-repository.html" title="Source Repository">Source Repository</a></li>
 											<li ><a href="mail-lists.html" title="Mailing Lists">Mailing Lists</a></li>
 											<li ><a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a></li>
 											<li ><a href="integration.html" title="Continuous Integration">Continuous Integration</a></li>
 											<li ><a href="plugins.html" title="Project Plugins">Project Plugins</a></li>
 											<li ><a href="license.html" title="Project License">Project License</a></li>
-											<li ><a href="modules.html" title="Project Modules">Project Modules</a></li>
 											<li ><a href="team-list.html" title="Project Team">Project Team</a></li>
 											<li ><a href="project-summary.html" title="Project Summary">Project Summary</a></li>
 											<li ><a href="dependencies.html" title="Dependencies">Dependencies</a></li>
@@ -85,12 +75,9 @@
 									<li class="dropdown-submenu ">
 										<a href="project-reports.html" title="Project Reports">Project Reports</a>
 										<ul class="dropdown-menu">
-											<li ><a href="xref/index.html" title="Source Xref">Source Xref</a></li>
-											<li ><a href="xref-test/index.html" title="Test Source Xref">Test Source Xref</a></li>
-											<li ><a href="apidocs/index.html" title="JavaDocs">JavaDocs</a></li>
-											<li ><a href="testapidocs/index.html" title="Test JavaDocs">Test JavaDocs</a></li>
 											<li ><a href="surefire-report.html" title="Surefire Report">Surefire Report</a></li>
-											<li ><a href="failsafe-report.html" title="Failsafe Report">Failsafe Report</a></li>
+											<li class="active"><a href="" title="Failsafe Report">Failsafe Report</a></li>
+											<li ><a href="checkstyle.html" title="Checkstyle">Checkstyle</a></li>
 											<li ><a href="dependency-updates-report.html" title="Dependency Updates Report">Dependency Updates Report</a></li>
 											<li ><a href="plugin-updates-report.html" title="Plugin Updates Report">Plugin Updates Report</a></li>
 											<li ><a href="property-updates-report.html" title="Property Updates Report">Property Updates Report</a></li>
@@ -123,39 +110,57 @@
 	<div class="row">
 		<div class="span12">
 			<div class="body-content">
+<script type="text/javascript">
+//<![CDATA[
+function toggleDisplay(elementId) {
+ var elm = document.getElementById(elementId + 'error');
+ if (elm && typeof elm.style != "undefined") {
+ if (elm.style.display == "none") {
+ elm.style.display = "";
+ document.getElementById(elementId + 'off').style.display = "none";
+ document.getElementById(elementId + 'on').style.display = "inline";
+ } else if (elm.style.display == "") { elm.style.display = "none";
+ document.getElementById(elementId + 'off').style.display = "inline";
+ document.getElementById(elementId + 'on').style.display = "none";
+ } 
+ } 
+ }
+//]]>
+</script> 
 <div class="section"> 
  <div class="page-header">
-  <h2 id="About_Aggregator_for_Nicepop_Application">About Aggregator for Nicepop Application</h2>
+  <h2 id="Surefire_Report">Surefire Report</h2>
  </div> 
- <a name="About_Aggregator_for_Nicepop_Application"></a> 
- <p>Gathers all the modules required for Nicepop Application</p> 
- <div class="section"> 
-  <h3 id="Project_Modules">Project Modules</h3> 
-  <a name="Project_Modules"></a> 
-  <p>This project has declared the following modules:</p> 
-  <table border="0" class="bodyTable table table-striped table-hover"> 
-   <thead> 
-    <tr class="a"> 
-     <th>Name</th> 
-     <th>Description</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr class="b"> 
-     <td><a href="build-config/index.html">Nicepop - Staging test - Build configuration</a></td> 
-     <td>Shared configuration files</td> 
-    </tr> 
-    <tr class="a"> 
-     <td><a href="nicepop-parent/index.html">Parent for Nicepop test</a></td> 
-     <td>Gathers all the shared configuration items for Nicepop test</td> 
-    </tr> 
-    <tr class="b"> 
-     <td><a href="nicepop-domain/index.html">Nicepop Domain Plugin</a></td> 
-     <td>Define the application domain</td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </div> 
+</div> 
+<div class="section"> 
+ <h2 id="Summary">Summary</h2> 
+ <a name="Summary"></a> 
+ <br /> 
+ <table border="1" class="bodyTable table table-striped table-hover"> 
+  <thead> 
+   <tr class="a"> 
+    <th>Tests</th> 
+    <th>Errors </th> 
+    <th>Failures</th> 
+    <th>Skipped</th> 
+    <th>Success Rate</th> 
+    <th>Time</th> 
+   </tr> 
+  </thead> 
+  <tbody> 
+   <tr class="b"> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0%</td> 
+    <td>0</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <br /> 
+ <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p> 
+ <br /> 
 </div>
 			</div>
 		</div>
@@ -173,74 +178,37 @@
 					<ul class="nav nav-list">
 						<li class="nav-header">Overview</li>
 						<li >
-							<a href="nicepop-parent/index.html" title="Introduction">Introduction</a>
+							<a href="index.html" title="Introduction">Introduction</a>
 						</li>
 						<li >
-							<a href="nicepop-parent/roadmap.html" title="Project Roadmap">Project Roadmap</a>
-						</li>
-						<li class="nav-header">Modules</li>
-						<li >
-							<a href="../../../dummySite/build-config/index.html" title="Nicepop - Staging test - Build configuration">Nicepop - Staging test - Build configuration</a>
-						</li>
-						<li >
-							<a href="nicepop-parent/index.html" title="Parent for Nicepop test">Parent for Nicepop test</a>
-						</li>
-						<li >
-							<a href="nicepop-domain/index.html" title="Nicepop Domain Plugin">Nicepop Domain Plugin</a>
+							<a href="roadmap.html" title="Project Roadmap">Project Roadmap</a>
 						</li>
 						<li class="nav-header">Project Documentation</li>
 						<li >
-							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-down"></i></a>
+							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-right"></i></a>
+						</li>
+						<li >
+							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-down"></i></a>
 							<ul class="nav nav-list">
+						<li >
+							<a href="surefire-report.html" title="Surefire Report">Surefire Report</a>
+						</li>
 						<li class="active">
-							<a href="#" title="About">About</a>
+							<a href="#" title="Failsafe Report">Failsafe Report</a>
 						</li>
 						<li >
-							<a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
+							<a href="checkstyle.html" title="Checkstyle">Checkstyle</a>
 						</li>
 						<li >
-							<a href="distribution-management.html" title="Distribution Management">Distribution Management</a>
+							<a href="dependency-updates-report.html" title="Dependency Updates Report">Dependency Updates Report</a>
 						</li>
 						<li >
-							<a href="dependency-info.html" title="Dependency Information">Dependency Information</a>
+							<a href="plugin-updates-report.html" title="Plugin Updates Report">Plugin Updates Report</a>
 						</li>
 						<li >
-							<a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a>
-						</li>
-						<li >
-							<a href="source-repository.html" title="Source Repository">Source Repository</a>
-						</li>
-						<li >
-							<a href="mail-lists.html" title="Mailing Lists">Mailing Lists</a>
-						</li>
-						<li >
-							<a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a>
-						</li>
-						<li >
-							<a href="integration.html" title="Continuous Integration">Continuous Integration</a>
-						</li>
-						<li >
-							<a href="plugins.html" title="Project Plugins">Project Plugins</a>
-						</li>
-						<li >
-							<a href="license.html" title="Project License">Project License</a>
-						</li>
-						<li >
-							<a href="modules.html" title="Project Modules">Project Modules</a>
-						</li>
-						<li >
-							<a href="team-list.html" title="Project Team">Project Team</a>
-						</li>
-						<li >
-							<a href="project-summary.html" title="Project Summary">Project Summary</a>
-						</li>
-						<li >
-							<a href="dependencies.html" title="Dependencies">Dependencies</a>
+							<a href="property-updates-report.html" title="Property Updates Report">Property Updates Report</a>
 						</li>
 							</ul>
-						</li>
-						<li >
-							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-right"></i></a>
 						</li>
 					</ul>
 				</div>
