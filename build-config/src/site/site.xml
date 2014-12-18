@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  #%L
+  site.xml - Parent for Nicepop test - Popsuite - 2013 - Test7
+  %%
+  Copyright (C) 2013 - 2014 Popsuite. All rights reserved-4.
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<project xmlns="http://maven.apache.org/DECORATION/1.6.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 
+                             http://maven.apache.org/xsd/decoration-1.6.0.xsd"
+	name="Maven providing a site and using java 8 - full step by step configuration">
+
+	<publishDate position="right" />
+	<version position="right" />
+<!-- 
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.3.1</version>
+    </skin>
+ -->
+	<skin>
+		<groupId>lt.velykis.maven.skins</groupId>
+		<artifactId>reflow-maven-skin</artifactId>
+		<version>1.1.1</version>
+	</skin>
+	<body>
+		<menu name="Overview" inherit="top">
+			<item name="Introduction" href="index.html" />
+			<item name="Project Roadmap" href="roadmap.html" />
+		</menu>
+		<menu ref="modules" inherit="top" />
+		<menu ref="reports" inherit="top" />
+        <footer>${doc.bottom}</footer>
+	</body>
+
+</project>
