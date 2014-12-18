@@ -11,20 +11,25 @@
     <description>
         Shared configuration files
     </description>
-    <url>${site.url.root}${module.path}</url>
-    
+    <!-- Same pattern as in other modules -->
+    <url>${site.url.root}${project.artifactId}/</url>
+    <organization>
+        <name>Popsuite</name>
+    </organization>
+    <inceptionYear>2013</inceptionYear>
+  
     <properties>
         <repository.domain>github.com</repository.domain>
         <repository.user>atao60</repository.user>
         <repository.name>maven-site-demo</repository.name>
         <site.path>${repository.domain}/${repository.user}/${repository.name}</site.path>
         <site.url.root>https://${site.path}/</site.url.root>
-        <top.site.url.root>http://dummySite/</top.site.url.root>
-        <module.path>build-config/</module.path>
+        <top.site.url.root>http://${site.path}/</top.site.url.root>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <site.maven.version>3.4</site.maven.version>
         <info.reports.maven.version>2.7</info.reports.maven.version>
 
     </properties>
@@ -32,13 +37,37 @@
     <distributionManagement>
         <site>
             <id>${project.groupId}-${project.artifactId}-site</id>
-            <url>${top.site.url.root}${module.path}</url>
+            <url>${top.site.url.root}${project.artifactId}</url>
         </site>
     </distributionManagement>
 
     <build>
         <pluginManagement>
             <plugins>
+             
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${site.maven.version}</version>
+                    <configuration>
+                        <topSiteURL>${top.site.url.root}</topSiteURL>
+                    </configuration>
+                    <dependencies>
+                        <!-- Required for Reflow skin -->
+                        <dependency>
+                            <groupId>lt.velykis.maven.skins</groupId>
+                            <artifactId>reflow-velocity-tools</artifactId>
+                            <version>1.1.1</version>
+                        </dependency>
+                        <!-- Reflow skin requires Velocity >= 1.7  -->
+                        <dependency>
+                            <groupId>org.apache.velocity</groupId>
+                            <artifactId>velocity</artifactId>
+                            <version>1.7</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+               
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
