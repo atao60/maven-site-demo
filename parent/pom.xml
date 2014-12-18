@@ -80,8 +80,8 @@
         <site.url.root>https://${site.path}/</site.url.root>
         <top.site.url.root>http://${site.path}/</top.site.url.root>
         <build.config.package>nicepop/build/config</build.config.package>
-        <build.config.resoources.dir>build-config/src/main/resources</build.config.resoources.dir>
-        <build.config.dir>${project.parent.basedir}/../${build.config.resoources.dir}/${build.config.package}</build.config.dir>
+        <build.config.resources.dir>build-config/src/main/resources</build.config.resources.dir>
+        <build.config.dir>${project.parent.basedir}/../${build.config.resources.dir}/${build.config.package}</build.config.dir>
         <jacoco.reportPath>${project.build.directory}/jacoco.exec</jacoco.reportPath>
         <jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</jacoco.itReportPath>
 
@@ -131,8 +131,8 @@
 
     <profiles>
         <profile>
-        <!-- Required to get module under target/staging/{module name}
-             and not under target/staging/{module name}/{module name}.
+        <!-- Required to get module under target/staging/{module artifactId}
+             and not under target/staging/{module artifactId}/{module artifactId}.
         -->
             <id>is-not-parent</id>
             <activation>
@@ -156,7 +156,7 @@
             </activation>
             <properties>
                 <build.config.dir>
-                    ${project.basedir}/../${build.config.resoources.dir}/${build.config.package}
+                    ${project.basedir}/../${build.config.resources.dir}/${build.config.package}
                 </build.config.dir>
             </properties>
             <build>
