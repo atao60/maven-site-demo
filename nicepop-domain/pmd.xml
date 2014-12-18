@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="5.2.1" timestamp="2014-12-18T11:28:37.060">
+<pmd version="5.2.1" timestamp="2014-12-18T14:19:09.159">
 <file name="/home/pierre/dev/nicepop-aggregator/nicepop-domain/src/main/java/org/nicepop/domain/App.java">
 <violation beginline="3" endline="21" begincolumn="1" endcolumn="2" rule="CommentSize" ruleset="Comments" package="org.nicepop.domain" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.2.1/pmd-java/rules/java/comments.html#CommentSize" priority="3">
 Comment is too large: Too many lines
