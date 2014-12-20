@@ -19,8 +19,7 @@
   #L%
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>nicepop-test</groupId>
@@ -51,6 +50,16 @@
     </scm>
 
     <distributionManagement>
+        <snapshotRepository>
+            <id>staging.repository.snapshots</id>
+            <name>Staging Repository - Snapshots</name>
+            <url>file:///home/pierre/git/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>staging.repository.releases</id>
+            <name>Staging Repository - Releases</name>
+            <url>file:///home/pierre/git/releases</url>        
+        </repository>
         <site>
             <id>${project.groupId}-${project.artifactId}-site</id>
             <url>${top.site.url.root}${project.artifactId}/</url>
@@ -101,7 +110,7 @@
         <!-- Maven and plugin management -->
         <mavenMinVersion>3.1</mavenMinVersion>
 
-        <maven.scm.publish.plugin>1.1</maven.scm.publish.plugin>
+        <scm.publish.maven.version>1.1</scm.publish.maven.version>
         <source.maven.version>2.4</source.maven.version>
         <resources.maven.version>2.7</resources.maven.version>
         <jar.maven.version>2.5</jar.maven.version>
@@ -126,6 +135,7 @@
         <jdepend.maven.version>2.0</jdepend.maven.version>
         <groovy.maven.version>1.2</groovy.maven.version>
         <groovy.version>2.3.8</groovy.version>
+        <release.maven.version>2.5.1</release.maven.version>
 
     </properties>
 
@@ -271,6 +281,9 @@
 
         <plugins>
             <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
             </plugin>
             <plugin>
@@ -313,16 +326,26 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${release.maven.version}</version>
+                    <configuration>
+                        <indentSize>4</indentSize>
+                        <preparationGoals>clean verify</preparationGoals>
+                        <goals>deploy</goals>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-scm-publish-plugin</artifactId>
-                    <version>${maven.scm.publish.plugin}</version>
+                    <version>${scm.publish.maven.version}</version>
                     <inherited>true</inherited>
                     <configuration>
                         <checkinComment>
                             Publishing documentation site for ${project.artifactId}:${project.version}
                         </checkinComment>
                         <skipDeletedFiles>true</skipDeletedFiles>
-                        <!-- pubScmUrl default value can't be kept here 
-                            as distributionManagement.site.url is used 
+                        <!-- pubScmUrl default value can't be used here 
+                            as distributionManagement.site.url value is chosen 
                             to dealt with multi module staging -->
                         <pubScmUrl>${scm.publish.pubScmUrl}</pubScmUrl>
                         <scmBranch>${scm.publish.scmBranch}</scmBranch>
@@ -793,7 +816,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8</version>
+                    <version>2.8.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

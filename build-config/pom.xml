@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>nicepop-test</groupId>
@@ -35,6 +34,16 @@
     </properties>
 
     <distributionManagement>
+        <snapshotRepository>
+            <id>staging.repository.snapshots</id>
+            <name>Staging Repository - Snapshots</name>
+            <url>file:///home/pierre/git/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>staging.repository.releases</id>
+            <name>Staging Repository - Releases</name>
+            <url>file:///home/pierre/git/releases</url>        
+        </repository>
         <site>
             <id>${project.groupId}-${project.artifactId}-site</id>
             <url>${top.site.url.root}${project.artifactId}</url>
